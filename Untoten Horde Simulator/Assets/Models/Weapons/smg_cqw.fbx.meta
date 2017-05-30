@@ -1,0 +1,122 @@
+fileFormatVersion: 2
+guid: 73af2fddb7fb4ea4690ddf168d186c9f
+timeCreated: 1494596436
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: attach_t7_smg_cqw_mag_viewe0d3417
+    100002: smg_cqw
+    100004: //RootNode
+    100006: smg_cqw_2
+    100008: tag_barrel
+    100010: tag_bolt_animate
+    100012: tag_brass
+    100014: tag_bullet_animate
+    100016: tag_clip
+    100018: tag_flash
+    100020: tag_grip
+    100022: tag_handguard
+    100024: tag_laser1
+    100026: tag_laser2
+    100028: tag_ring_animate
+    100030: tag_sights_off
+    100032: tag_sights_on
+    100034: tag_sights_up_animate
+    100036: tag_stock
+    100038: tag_track
+    400000: attach_t7_smg_cqw_mag_viewe0d3417
+    400002: smg_cqw
+    400004: //RootNode
+    400006: smg_cqw_2
+    400008: tag_barrel
+    400010: tag_bolt_animate
+    400012: tag_brass
+    400014: tag_bullet_animate
+    400016: tag_clip
+    400018: tag_flash
+    400020: tag_grip
+    400022: tag_handguard
+    400024: tag_laser1
+    400026: tag_laser2
+    400028: tag_ring_animate
+    400030: tag_sights_off
+    400032: tag_sights_on
+    400034: tag_sights_up_animate
+    400036: tag_stock
+    400038: tag_track
+    4300000: attach_t7_smg_cqw_mag_viewe0d3417
+    4300002: smg_cqw
+    9500000: //RootNode
+    13700000: attach_t7_smg_cqw_mag_viewe0d3417
+    13700002: smg_cqw
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,122 @@
+fileFormatVersion: 2
+guid: c6fafa2a2aa99314ca114fd5e24a2daf
+timeCreated: 1494596442
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: smg_wvl
+    100002: //RootNode
+    100004: smg_wvl_2
+    100006: tag_barrel
+    100008: tag_bolt_animate
+    100010: tag_brass
+    100012: tag_bullet_animate
+    100014: tag_clip
+    100016: tag_flash
+    100018: tag_foregrip
+    100020: tag_grip
+    100022: tag_laser1
+    100024: tag_laser2
+    100026: tag_lower
+    100028: tag_mag_release_lt_animate
+    100030: tag_mag_release_rt_animate
+    100032: tag_sights_on
+    100034: tag_stock
+    100036: tag_upper
+    100038: wpn_t7_smg_weevil_mag_view4294685f
+    400000: smg_wvl
+    400002: //RootNode
+    400004: smg_wvl_2
+    400006: tag_barrel
+    400008: tag_bolt_animate
+    400010: tag_brass
+    400012: tag_bullet_animate
+    400014: tag_clip
+    400016: tag_flash
+    400018: tag_foregrip
+    400020: tag_grip
+    400022: tag_laser1
+    400024: tag_laser2
+    400026: tag_lower
+    400028: tag_mag_release_lt_animate
+    400030: tag_mag_release_rt_animate
+    400032: tag_sights_on
+    400034: tag_stock
+    400036: tag_upper
+    400038: wpn_t7_smg_weevil_mag_view4294685f
+    4300000: wpn_t7_smg_weevil_mag_view4294685f
+    4300002: smg_wvl
+    9500000: //RootNode
+    13700000: smg_wvl
+    13700002: wpn_t7_smg_weevil_mag_view4294685f
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
