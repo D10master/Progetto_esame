@@ -24,7 +24,7 @@ public class MapGenerator : MonoBehaviour
     List<Exit> notConnectedExits = new List<Exit>();
 
     //riferimento al game manager che si occupa di gestire il gioco
-    private PlayManager gm;
+    private GameManager gm;
 
     #endregion
 
@@ -34,7 +34,7 @@ public class MapGenerator : MonoBehaviour
     void Start()
     {
         //viene creato il riferimento al game manager
-        gm = GetComponent<PlayManager>();
+        gm = GetComponent<GameManager>();
     }
 
     /*void Update()

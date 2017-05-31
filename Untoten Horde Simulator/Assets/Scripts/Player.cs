@@ -208,7 +208,7 @@ public class Player : MonoBehaviour
                 if(points >= door.cost)
                 {
                     Transform[] newSpawnPoints = door.transform.parent.GetComponent<Room>().spawnPoints;
-                    PlayManager gm = GameObject.Find("Game Manager").GetComponent<PlayManager>();
+                    GameManager gm = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
                     ModifyPoints(-door.cost);
                     door.GetComponent<Collider>().enabled = false;

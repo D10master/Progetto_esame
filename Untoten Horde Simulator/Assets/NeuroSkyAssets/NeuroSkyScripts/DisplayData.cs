@@ -15,6 +15,14 @@ public class DisplayData : MonoBehaviour
 	
 	private float delta;
 
+	public int Attention1
+	{
+		get
+		{
+			return this.attention1;
+		}
+	}
+
     void Start()
     {
 		

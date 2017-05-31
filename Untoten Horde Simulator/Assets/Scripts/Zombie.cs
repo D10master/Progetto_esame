@@ -138,7 +138,7 @@ public class Zombie : MonoBehaviour
 
     private void Die(Player player)
     {
-        PlayManager gm = GameObject.Find("Game Manager").GetComponent<PlayManager>();
+        GameManager gm = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
         hp = 0;
         player.ModifyPoints(50);
