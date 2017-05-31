@@ -59,6 +59,8 @@ public class MapGenerator : MonoBehaviour
     {
         //Debug.Log("Generating map...");
 
+        maxRoomsCount = gm.neuroskyData.Attention1 / 10;
+
         for(int i=0; i<roomsPlaceholder.transform.childCount; i++)
         {
             Destroy(roomsPlaceholder.GetChild(i).gameObject);
