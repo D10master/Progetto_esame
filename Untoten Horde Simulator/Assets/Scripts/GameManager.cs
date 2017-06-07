@@ -8,10 +8,12 @@ public class GameManager : MonoBehaviour
     #region Fields
 
     //audio component
-    public GameObject ambientSound;
-    private AudioSource ambientSoundSource;
+    public AudioSource ambientSoundSource;
     private AudioSource audioSrc;
-    public AudioClip[] audioClips;
+    public AudioClip ambientClip;
+    public AudioClip roundStartClip;
+    public AudioClip roundEndClip;
+    public AudioClip gameOverClip;
 
     //placeholders
     public Transform spawnPoint;
@@ -43,6 +45,8 @@ public class GameManager : MonoBehaviour
 
     //UI elements
     public Text roundText;
+
+    public Animator gameOverAnimator;
 
 	//neurosky data
 	public DisplayData neuroskyData;
@@ -93,7 +97,6 @@ public class GameManager : MonoBehaviour
     void Start ()
     {
         audioSrc = GetComponent<AudioSource>();
-        ambientSoundSource = ambientSound.GetComponent<AudioSource>();
         zombiesSpawnPoints = new List<Transform>();
         spawnedZombies = new List<Zombie>();
         mapGenerator = GetComponent<MapGenerator>();
@@ -138,7 +141,7 @@ public class GameManager : MonoBehaviour
 
         if (!ambientSoundSource.isPlaying)
         {
-            ambientSoundSource.clip = audioClips[2];
+            ambientSoundSource.clip = ambientClip;
             ambientSoundSource.Play();
         }
 
@@ -179,7 +182,7 @@ public class GameManager : MonoBehaviour
         zombiesHealth = startingZombiesHealth + (zombiesHealthIncrement * round - 1);
         roundInProgress = true;
         UpdateRoundText();
-        ambientSoundSource.clip = audioClips[0];
+        ambientSoundSource.clip = roundStartClip;
         ambientSoundSource.Play();
     }
 
@@ -188,7 +191,8 @@ public class GameManager : MonoBehaviour
         spawnedZombies.Clear();
         timeToNextRound = roundPauseTime;
         roundInProgress = false;
-        PlaySound(1);
+        ambientSoundSource.clip = roundEndClip;
+        ambientSoundSource.Play();
     }
 
     public void UpdateRoundText()
@@ -210,14 +214,17 @@ public class GameManager : MonoBehaviour
         zombiesReserve--;
         spawnedZombies.Add(zombieComponent);
 	}
-	
-    public void PlaySound(int i)
+
+    public void GameOver()
     {
-        audioSrc.clip = audioClips[i];
-        audioSrc.Play();
+        gameOverAnimator.SetTrigger("Game Over");
+        ambientSoundSource.clip = gameOverClip;
+        ambientSoundSource.Play();
     }
 
-	private void AddAttentionLevel()
+    #region Neurosky Methods
+
+    private void AddAttentionLevel()
 	{
 		attentionLevels.Add (neuroskyData.Attention1);
 
@@ -237,6 +244,8 @@ public class GameManager : MonoBehaviour
 
 		return Mathf.RoundToInt((float)total / attentionLevels.Count);
 	}
+
+    #endregion
 
     #endregion
 

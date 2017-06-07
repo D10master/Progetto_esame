@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
 
     #region Fields
 
+    private GameManager gm;
+
     public float normalSpeed;
     public float aimingSpeed;
 
@@ -18,8 +20,6 @@ public class Player : MonoBehaviour
     public Transform weaponSlot;
     public LayerMask activableLayer;
     public Transform weapon;
-    public Transform normalWeaponPlaceholder;
-    public Transform aimingWeaponPlaceholder;
     private Weapon equippedWeapon;
 
     //Elementi UI
@@ -29,8 +29,12 @@ public class Player : MonoBehaviour
     public Image sight;
     public Image hitMarker;
 
+    //hp e rigenerazione
     public int maxHp;
     private int hp;
+    public float regenerationStartTime;
+    private float nextRegeneration;
+
     private bool isAiming;
     private int points;
 
@@ -47,11 +51,14 @@ public class Player : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
+        gm = GameObject.Find("Game Manager").GetComponent<GameManager>();
         mainCamera = Camera.main;
         fpc = GetComponent<FirstPersonController>();
         animator = GetComponent<Animator>();
         equippedWeapon = weaponSlot.GetComponentInChildren<Weapon>();
         weapon = equippedWeapon.transform;
+
+        hitMarker.GetComponent<HitMarker>().playerTransform = transform;
 
         hp = maxHp;
         points = 1000;
@@ -247,6 +254,7 @@ public class Player : MonoBehaviour
         animator.SetTrigger("Die");
         fpc.enabled = false;
         this.enabled = false;
+        gm.GameOver();
     }
 
     public void ModifyPoints(int delta)

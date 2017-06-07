@@ -38,7 +38,7 @@ public class Zombie : MonoBehaviour
         target = GameObject.Find("Player").transform;
         animator = GetComponent<Animator>();
 
-        nav.stoppingDistance = meleeRange - 0.2f;
+        nav.stoppingDistance = meleeRange - 0.25f;
         nav.speed = speed;
         if(speed > Consts.ZOMBIE_RUNNING_SPEED)
         {
@@ -96,6 +96,11 @@ public class Zombie : MonoBehaviour
                     nextAttack = attackTime;
                 }
             }
+
+            if (nav.isOnOffMeshLink)
+            {
+                animator.SetTrigger("Jump");
+            }
         }
 
         if(nextSound > 0)
@@ -114,12 +119,13 @@ public class Zombie : MonoBehaviour
 
     #region Methods
 
-    private void Attack()
+    public void Attack()
     {
-        target.GetComponent<Player>().TakeDamage(meleeDamage);
+        if(Vector3.Distance(target.transform.position, transform.position) <= meleeRange)
+            target.GetComponent<Player>().TakeDamage(meleeDamage);
     }
 
-    private void Attack(Player player)
+    public void Attack(Player player)
     {
         player.TakeDamage(meleeDamage);
     }
