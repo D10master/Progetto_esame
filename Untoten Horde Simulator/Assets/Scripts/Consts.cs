@@ -9,4 +9,5 @@
     public const float MIN_ZOMBIE_SOUND_TIME = 5f;
     public const float MAX_ZOMBIE_SOUND_TIME = 8f;
     public const int MAX_ZOMBIES_IN_SCENE = 6;
+	public const int MAX_ARMOR = 100;
 }

@@ -49,7 +49,8 @@ public class GameManager : MonoBehaviour
     public Animator gameOverAnimator;
 
 	//neurosky data
-	public DisplayData neuroskyData;
+	public TGCConnectionController connectionController;
+	private int attention;
 	public float attentionPickTime;
 	private float nextPick;
 	private List<int> attentionLevels;
@@ -108,6 +109,8 @@ public class GameManager : MonoBehaviour
 		roundInProgress = false;
 
         nextSpawn = Random.Range(Consts.MIN_SPAWN_TIME, Consts.MAX_SPAWN_TIME);
+
+		connectionController.UpdateAttentionEvent += OnUpdateAttention;
 		attentionLevels = new List<int>();
 		nextPick = attentionPickTime;
 	}
@@ -226,7 +229,7 @@ public class GameManager : MonoBehaviour
 
     private void AddAttentionLevel()
 	{
-		attentionLevels.Add (neuroskyData.Attention1);
+		attentionLevels.Add (attention);
 
 		if (attentionLevels.Count > attentionListLenght) {
 			attentionLevels.Remove (0);
@@ -243,6 +246,11 @@ public class GameManager : MonoBehaviour
 		}
 
 		return Mathf.RoundToInt((float)total / attentionLevels.Count);
+	}
+
+	void OnUpdateAttention(int value)
+	{
+		attention = value;
 	}
 
     #endregion

@@ -21,15 +21,14 @@ public class TGCConnectionController : MonoBehaviour {
 	public event UpdateIntValueDelegate UpdateRawdataEvent;
 	public event UpdateIntValueDelegate UpdateBlinkEvent;
 	
-	public event UpdateFloatValueDelegate UpdateDeltaEvent;
-	public event UpdateFloatValueDelegate UpdateThetaEvent;
-	public event UpdateFloatValueDelegate UpdateLowAlphaEvent;
-	public event UpdateFloatValueDelegate UpdateHighAlphaEvent;
-	public event UpdateFloatValueDelegate UpdateLowBetaEvent;
-	public event UpdateFloatValueDelegate UpdateHighBetaEvent;
-	public event UpdateFloatValueDelegate UpdateLowGammaEvent;
-	public event UpdateFloatValueDelegate UpdateHighGammaEvent;
-	
+	public event UpdateIntValueDelegate UpdateDeltaEvent;
+	public event UpdateIntValueDelegate UpdateThetaEvent;
+	public event UpdateIntValueDelegate UpdateLowAlphaEvent;
+	public event UpdateIntValueDelegate UpdateHighAlphaEvent;
+	public event UpdateIntValueDelegate UpdateLowBetaEvent;
+	public event UpdateIntValueDelegate UpdateHighBetaEvent;
+	public event UpdateIntValueDelegate UpdateLowGammaEvent;
+	public event UpdateIntValueDelegate UpdateHighGammaEvent;
 
 	void Start () {
 		Connect();
@@ -51,7 +50,7 @@ public class TGCConnectionController : MonoBehaviour {
 		    byte[] myWriteBuffer = Encoding.ASCII.GetBytes(@"{""enableRawOutput"": true, ""format"": ""Json""}");
 		    stream.Write(myWriteBuffer, 0, myWriteBuffer.Length);
 			
-			InvokeRepeating("ParseData",0.1f,0.02f);
+			InvokeRepeating("ParseData",0.0f,1.1f);
 		}
 	}
 	
@@ -88,28 +87,28 @@ public class TGCConnectionController : MonoBehaviour {
 	              IDictionary eegPowers = (IDictionary)primary["eegPower"];
 								
 				  if(UpdateDeltaEvent != null){
-					 UpdateDeltaEvent(float.Parse(eegPowers["delta"].ToString()));			
+								UpdateDeltaEvent(int.Parse(eegPowers["delta"].ToString()));			
 					}
 				  if(UpdateThetaEvent != null){
-					 UpdateThetaEvent(float.Parse(eegPowers["theta"].ToString()));			
+								UpdateThetaEvent(int.Parse(eegPowers["theta"].ToString()));			
 					}
 				  if(UpdateLowAlphaEvent != null){
-					 UpdateLowAlphaEvent(float.Parse(eegPowers["lowAlpha"].ToString()));
+								UpdateLowAlphaEvent(int.Parse(eegPowers["lowAlpha"].ToString()));
 					}
 				  if(UpdateHighAlphaEvent != null){
-					 UpdateHighAlphaEvent(float.Parse(eegPowers["highAlpha"].ToString()));
+								UpdateHighAlphaEvent(int.Parse(eegPowers["highAlpha"].ToString()));
 					}
 				  if(UpdateLowBetaEvent != null){
-					 UpdateLowBetaEvent(float.Parse(eegPowers["lowBeta"].ToString()));
+								UpdateLowBetaEvent(int.Parse(eegPowers["lowBeta"].ToString()));
 					}
 				  if(UpdateHighBetaEvent != null){
-					 UpdateHighBetaEvent(float.Parse(eegPowers["highBeta"].ToString()));
+								UpdateHighBetaEvent(int.Parse(eegPowers["highBeta"].ToString()));
 					}
 				  if(UpdateLowGammaEvent != null){
-					 UpdateLowGammaEvent(float.Parse(eegPowers["lowGamma"].ToString()));			
+								UpdateLowGammaEvent(int.Parse(eegPowers["lowGamma"].ToString()));			
 					}
 				  if(UpdateHighGammaEvent != null){
-					 UpdateHighGammaEvent(float.Parse(eegPowers["highGamma"].ToString()));
+								UpdateHighGammaEvent(int.Parse(eegPowers["highGamma"].ToString()));
 					}
 	            }
 	          }
@@ -122,7 +121,7 @@ public class TGCConnectionController : MonoBehaviour {
 	        }
 	      }
 	      catch(IOException e){ Debug.Log("IOException " + e); }
-	      catch(System.Exception e){ Debug.Log("Exception " + e); }
+			catch(System.Exception ){/*Debug.Log("Exception " + e);*/ }
 	    }		
 		
 	}// end ParseData
