@@ -6,17 +6,17 @@ public class HitMarker : MonoBehaviour
     public Transform playerTransform;
     public float rotation;
 
-    private RectTransform rect;
+    //private RectTransform rect;
 
 	// Use this for initialization
 	void Start ()
     {
-        rect = GetComponent<RectTransform>();
+        //rect = GetComponent<RectTransform>();
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        rect.localRotation.SetEulerRotation(0, 0, playerTransform.rotation.y - rotation);
+		transform.localRotation = Quaternion.Euler(0f, 0f, playerTransform.rotation.eulerAngles.y - rotation);
 	}
 }

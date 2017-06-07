@@ -119,17 +119,6 @@ public class Zombie : MonoBehaviour
 
     #region Methods
 
-    public void Attack()
-    {
-        if(Vector3.Distance(target.transform.position, transform.position) <= meleeRange)
-            target.GetComponent<Player>().TakeDamage(meleeDamage);
-    }
-
-    public void Attack(Player player)
-    {
-        player.TakeDamage(meleeDamage);
-    }
-
     public void TakeDamage(int damage, Player player)
     {
         hp -= damage;
@@ -164,6 +153,17 @@ public class Zombie : MonoBehaviour
         Destroy(gameObject, 20);
         enabled = false;
     }
+
+	public void Attack()
+	{
+		if(Vector3.Distance(target.transform.position, transform.position) <= meleeRange)
+			target.GetComponent<Player>().TakeDamage(meleeDamage);
+	}
+
+	public void Attack(Player player)
+	{
+		player.TakeDamage(meleeDamage);
+	}
 
     public void PlaySound(AudioClip[] audioClips, int i)
     {
