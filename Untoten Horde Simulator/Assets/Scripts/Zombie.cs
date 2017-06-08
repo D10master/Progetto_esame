@@ -141,7 +141,7 @@ public class Zombie : MonoBehaviour
         animator.SetBool("IsDead", true);
         animator.speed = 1f;
         animator.SetTrigger("Die");
-        PlaySound(dieClips,0);
+		PlaySound(dieClips,Random.Range(0,dieClips.Length));
         Collider[] colliders = GetComponentsInChildren<Collider>();
         for(int i=0; i<colliders.Length; i++)
         {
