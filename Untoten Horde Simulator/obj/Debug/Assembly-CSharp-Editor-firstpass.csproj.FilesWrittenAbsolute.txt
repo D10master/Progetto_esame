@@ -28,8 +28,6 @@
 /Users/francesco/Desktop/Progetto_esame/Untoten Horde Simulator/Temp/bin/Debug/UnityEditor.OSXStandalone.Extensions.dll
 /Users/francesco/Desktop/Progetto_esame/Untoten Horde Simulator/Temp/bin/Debug/Jayrock.dll
 /Users/francesco/Desktop/Progetto_esame/Untoten Horde Simulator/Temp/bin/Debug/Jayrock.Json.dll
-/Users/francesco/Desktop/Progetto_esame/Untoten Horde Simulator/Temp/bin/Debug/Assembly-CSharp-firstpass.dll
-/Users/francesco/Desktop/Progetto_esame/Untoten Horde Simulator/Temp/bin/Debug/Assembly-CSharp-firstpass.dll.mdb
 /Users/francesco/Desktop/Progetto_esame/Untoten Horde Simulator/Temp/bin/Debug/Mono.Cecil.dll
 /Users/francesco/Desktop/Progetto_esame/Untoten Horde Simulator/Temp/bin/Debug/Unity.SerializationLogic.dll
 /Users/francesco/Desktop/Progetto_esame/Untoten Horde Simulator/Temp/bin/Debug/Unity.DataContract.dll
@@ -43,3 +41,5 @@
 /Users/francesco/Desktop/Progetto_esame/Untoten Horde Simulator/Temp/bin/Debug/UnityEditor.iOS.Extensions.Xcode.xml
 /Users/francesco/Desktop/Progetto_esame/Untoten Horde Simulator/Temp/bin/Debug/UnityEditor.iOS.Extensions.Common.dll
 /Users/francesco/Desktop/Progetto_esame/Untoten Horde Simulator/Temp/bin/Debug/UnityEditor.iOS.Extensions.Common.dll.mdb
+/Users/francesco/Desktop/Progetto_esame/Untoten Horde Simulator/Temp/bin/Debug/Assembly-CSharp-firstpass.dll
+/Users/francesco/Desktop/Progetto_esame/Untoten Horde Simulator/Temp/bin/Debug/Assembly-CSharp-firstpass.dll.mdb

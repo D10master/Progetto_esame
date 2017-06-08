@@ -55,7 +55,6 @@ public class DisplayData : MonoBehaviour
 
 
 	void OnUpdatePoorSignal(int value){
-		Debug.Log ("OnUpdatePoorSignal()...");
 
 		poorSignal1 = value;
 		if(value < 25){
