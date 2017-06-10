@@ -157,7 +157,7 @@ public class Zombie : MonoBehaviour
 	public void Attack()
 	{
 		if(Vector3.Distance(target.transform.position, transform.position) <= meleeRange)
-			target.GetComponent<Player>().TakeDamage(meleeDamage);
+			target.GetComponent<Player>().TakeDamage(Consts.CalculateDamage(meleeDamage));
 	}
 
 	public void Attack(Player player)
