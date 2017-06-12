@@ -25,10 +25,10 @@ public class DisplayData : MonoBehaviour
 
 	void Start()
 	{
-		Debug.Log ("DisplayData Start()...");
+		//Debug.Log ("DisplayData Start()...");
 
 		controller = GetComponent<TGCConnectionController>();
-		Debug.Log ("Controller Found!");
+		//Debug.Log ("Controller Found!");
 
 		controller.UpdatePoorSignalEvent += OnUpdatePoorSignal;
 		/*controller.UpdateAttentionEvent += OnUpdateAttention;

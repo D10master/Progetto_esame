@@ -8,19 +8,30 @@ public class Player : MonoBehaviour
 
     #region Fields
 
+	//riferimento allo script che cestisce il gioco
     private GameManager gm;
+	//riferimento alla camera di gioco
+	private Camera mainCamera;
+	//riferimento al controller del giocatore che si occupa di prendere gli input da tastiera
+	private FirstPersonController fpc;
+	//riferimento all'animatore che si occupa di gestire le animazioni del giocatore
+	private Animator animator;
+	//private List<Weapon> weapons = new List<Weapon>();
+	//oggetto che contiene l'arma impugnata
+	public Transform weaponSlot;
+	//layer che contiene tutti gli ogetti attivabili
+	public LayerMask activableLayer;
+	//riferimento all'oggetto arma
+	public Transform weapon;
+	//riferimento allo script arma
+	private Weapon equippedWeapon;
 
+	//velocità di camminata senza che l'arma sia tenuta in modalità mirino
     public float normalSpeed;
+	//velocità di camminata con l'arma tenuta in modalità mirino
     public float aimingSpeed;
 
-    private Camera mainCamera;
-    private FirstPersonController fpc;
-    private Animator animator;
-    private List<Weapon> weapons = new List<Weapon>();
-    public Transform weaponSlot;
-    public LayerMask activableLayer;
-    public Transform weapon;
-    private Weapon equippedWeapon;
+
 
     //Elementi UI
     public Text ammoCounter;
@@ -28,16 +39,25 @@ public class Player : MonoBehaviour
     public Text actionHint;
     public Image sight;
     public Image hitMarker;
+	public Slider hpSlider;
+	public Slider armorSlider;
 
     //hp e rigenerazione
     public int maxHp;
-    private int hp;
+	private int hp;
+	public int maxArmor;
+	private int armor;
     public float regenerationStartTime;
+	public float regenerateEvery;
     private float nextRegeneration;
+	public float regenerationAmount;
 
+	//flag che dice se il giocatore sta mirando
     private bool isAiming;
+	//punti accumulati dal giocatore con le uccisioni
     private int points;
 
+	//parametri interpolazione arma
     private Vector3 weaponStartingPosition;
     private Vector3 weaponInterpolatePosition;
     public float lerpTime;
@@ -57,6 +77,10 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         equippedWeapon = weaponSlot.GetComponentInChildren<Weapon>();
         weapon = equippedWeapon.transform;
+		armorSlider.minValue = 0;
+		armorSlider.maxValue = maxArmor;
+		hpSlider.minValue = 0;
+		hpSlider.maxValue = maxHp;
 
         hitMarker.GetComponent<HitMarker>().playerTransform = transform;
 
@@ -67,6 +91,8 @@ public class Player : MonoBehaviour
 
         UpdatePointsCounter();
         UpdateAmmoCounter();
+		UpdateArmorUI ();
+		UpdateHpUI ();
 	}
 	
 	// Update is called once per frame
@@ -235,8 +261,9 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        hp -= damage;
-        Debug.Log("Damage:" + damage);
+		hp -= Consts.CalculateDamage(damage, armor);
+		UpdateHpUI ();
+        //Debug.Log("Damage:" + damage);
         if (hp <= damage)
         {
             Die();
@@ -251,10 +278,12 @@ public class Player : MonoBehaviour
     private void Die()
     {
         hp = 0;
-        animator.SetTrigger("Die");
+		UpdateHpUI ();
+
         fpc.enabled = false;
         this.enabled = false;
         gm.GameOver();
+		animator.SetTrigger("Die");
     }
 
     public void ModifyPoints(int delta)
@@ -262,6 +291,13 @@ public class Player : MonoBehaviour
         points += delta;
         UpdatePointsCounter();
     }
+
+	public void ModifyArmor(int delta)
+	{
+		armor += delta;
+		armor = (int)Mathf.Clamp (armor, 0, maxArmor);
+		UpdateArmorUI ();
+	}
 
     #region UI Methods
 
@@ -291,6 +327,16 @@ public class Player : MonoBehaviour
         hitMarker.enabled = true;
         hitMarker.rectTransform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x));
     }
+
+	private void UpdateArmorUI()
+	{
+		armorSlider.value = armor;
+	}
+
+	private void UpdateHpUI()
+	{
+		hpSlider.value = hp;
+	}
 
     #endregion
 

@@ -91,6 +91,7 @@ public class Zombie : MonoBehaviour
                 else
                 {
                     //Attack(target.GetComponent<Player>());
+					Attack();
                     animator.SetTrigger("Attack");
                     PlaySound(attackClips, Random.Range(0, attackClips.Length));
                     nextAttack = attackTime;
@@ -157,7 +158,7 @@ public class Zombie : MonoBehaviour
 	public void Attack()
 	{
 		if(Vector3.Distance(target.transform.position, transform.position) <= meleeRange)
-			target.GetComponent<Player>().TakeDamage(Consts.CalculateDamage(meleeDamage));
+			target.GetComponent<Player>().TakeDamage(meleeDamage);
 	}
 
 	public void Attack(Player player)
