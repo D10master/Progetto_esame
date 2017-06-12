@@ -16,7 +16,9 @@ public class GameManager : MonoBehaviour
     public AudioClip gameOverClip;
 
     //placeholders
-    public Transform spawnPoint;
+	public Transform spawnPoint;
+	public Transform environment;
+
     public GameObject player;
     public GameObject[] zombies;
 
@@ -38,7 +40,7 @@ public class GameManager : MonoBehaviour
     public int zombiesIncrement;
     private int zombiesReserve;
     private List<Zombie> spawnedZombies;
-    public int maxSpawnedZombies;
+	private int maxSpawnedZombies;
     public int startingZombiesHealth;
     public int zombiesHealthIncrement;
     private int zombiesHealth;
@@ -54,8 +56,7 @@ public class GameManager : MonoBehaviour
 	public float attentionPickTime;
 	private float nextPick;
 	private List<int> attentionLevels;
-	public int attentionListLenght = 150;
-
+	public int attentionListLength = 150;
     #endregion
 
 
@@ -104,11 +105,12 @@ public class GameManager : MonoBehaviour
         mapGenerator.GenerateMap();
         SpawnPlayer();
 
+		maxSpawnedZombies = Consts.MAX_ZOMBIES_IN_SCENE;
         round = 0;
 		timeToNextRound = roundPauseTime;
 		roundInProgress = false;
 
-        nextSpawn = Random.Range(Consts.MIN_SPAWN_TIME, Consts.MAX_SPAWN_TIME);
+        nextSpawn = Random.Range(Consts.MIN_ZOMBIE_SPAWN_TIME, Consts.MAX_ZOMBIE_SPAWN_TIME);
 
 		connectionController.UpdateAttentionEvent += OnUpdateAttention;
 		attentionLevels = new List<int>();
@@ -134,7 +136,7 @@ public class GameManager : MonoBehaviour
                 if (SpawnedZombies.Count < Consts.MAX_ZOMBIES_IN_SCENE)
                 {
                     SpawnZombie(Vector3.zero);
-                    nextSpawn = Random.Range(Consts.MIN_SPAWN_TIME, Consts.MAX_SPAWN_TIME);
+                    nextSpawn = Random.Range(Consts.MIN_ZOMBIE_SPAWN_TIME, Consts.MAX_ZOMBIE_SPAWN_TIME);
                 }
 			}
 		}
@@ -173,6 +175,7 @@ public class GameManager : MonoBehaviour
     {
         player = Instantiate(player, spawnPoint.position, spawnPoint.rotation);
         player.name = "Player";
+		player.transform.SetParent (environment);
     }
 
     public void CheckZombies()
@@ -236,7 +239,7 @@ public class GameManager : MonoBehaviour
 	{
 		attentionLevels.Add (attention);
 
-		if (attentionLevels.Count > attentionListLenght) {
+		if (attentionLevels.Count > attentionListLength) {
 			attentionLevels.Remove (0);
 		}
 	}
@@ -253,7 +256,7 @@ public class GameManager : MonoBehaviour
 		return Mathf.RoundToInt((float)total / attentionLevels.Count);
 	}
 
-	void OnUpdateAttention(int value)
+	private void OnUpdateAttention(int value)
 	{
 		attention = value;
 	}

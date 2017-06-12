@@ -5,7 +5,7 @@ public class Door : MonoBehaviour
 
     private Animator animator;
 
-    public int cost;
+    public int openCost;
 
 	// Use this for initialization
 	void Start ()
@@ -14,7 +14,7 @@ public class Door : MonoBehaviour
 	}
 
 
-    public void Open(Player player)
+    public void Open()
     {
         animator.SetTrigger("Open");
     }

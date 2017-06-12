@@ -8,7 +8,7 @@ public class Weapon : MonoBehaviour
     public FireType fireType;
     public LayerMask layer;
     private Animator animator;
-    public ParticleSystem particles;
+    public ParticleSystem muzzleFlash;
     private AudioSource sound;
     public Player player;
 
@@ -131,7 +131,7 @@ public class Weapon : MonoBehaviour
         }
         else if(fireType == FireType.BLAST && blastQueue > 0)
         {
-            Shot();
+            Shoot();
             blastQueue--;
         }
 
@@ -146,7 +146,7 @@ public class Weapon : MonoBehaviour
 
     #region Methods
 
-    public void Shot()
+    public void Shoot()
     {
         
             if (ammoInMagazine > 0 && animator.GetBool("Is Reloading") == false)
@@ -192,7 +192,7 @@ public class Weapon : MonoBehaviour
                 nextShot = shotTime;
 
                 animator.SetTrigger("Shot");
-                particles.Play();
+                muzzleFlash.Play();
                 sound.clip = shootClip;
                 sound.Play();
             }

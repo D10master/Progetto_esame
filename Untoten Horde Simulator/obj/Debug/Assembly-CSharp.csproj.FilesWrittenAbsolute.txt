@@ -1,7 +1,3 @@
-/Users/francesco/Desktop/Progetto_esame/Untoten Horde Simulator/Temp/bin/Debug/Assembly-CSharp.dll.mdb
-/Users/francesco/Desktop/Progetto_esame/Untoten Horde Simulator/Temp/bin/Debug/Assembly-CSharp.dll
-/Users/francesco/Desktop/Progetto_esame/Untoten Horde Simulator/obj/Debug/Assembly-CSharp.dll
-/Users/francesco/Desktop/Progetto_esame/Untoten Horde Simulator/obj/Debug/Assembly-CSharp.dll.mdb
 /Users/francesco/Desktop/Progetto_esame/Untoten Horde Simulator/Temp/bin/Debug/UnityEngine.dll
 /Users/francesco/Desktop/Progetto_esame/Untoten Horde Simulator/Temp/bin/Debug/UnityEditor.dll
 /Users/francesco/Desktop/Progetto_esame/Untoten Horde Simulator/Temp/bin/Debug/UnityEngine.UI.dll
@@ -13,8 +9,6 @@
 /Users/francesco/Desktop/Progetto_esame/Untoten Horde Simulator/Temp/bin/Debug/UnityEngine.VR.dll
 /Users/francesco/Desktop/Progetto_esame/Untoten Horde Simulator/Temp/bin/Debug/Jayrock.dll
 /Users/francesco/Desktop/Progetto_esame/Untoten Horde Simulator/Temp/bin/Debug/Jayrock.Json.dll
-/Users/francesco/Desktop/Progetto_esame/Untoten Horde Simulator/Temp/bin/Debug/Assembly-CSharp-firstpass.dll
-/Users/francesco/Desktop/Progetto_esame/Untoten Horde Simulator/Temp/bin/Debug/Assembly-CSharp-firstpass.dll.mdb
 /Users/francesco/Desktop/Progetto_esame/Untoten Horde Simulator/Temp/bin/Debug/Mono.Cecil.dll
 /Users/francesco/Desktop/Progetto_esame/Untoten Horde Simulator/Temp/bin/Debug/Unity.SerializationLogic.dll
 /Users/francesco/Desktop/Progetto_esame/Untoten Horde Simulator/Temp/bin/Debug/Unity.DataContract.dll
@@ -24,3 +18,9 @@
 /Users/francesco/Desktop/Progetto_esame/Untoten Horde Simulator/Temp/bin/Debug/Unity.CecilTools.dll
 /Users/francesco/Desktop/Progetto_esame/Untoten Horde Simulator/Temp/bin/Debug/Mono.Cecil.Pdb.dll
 /Users/francesco/Desktop/Progetto_esame/Untoten Horde Simulator/Temp/bin/Debug/Mono.Cecil.Mdb.dll
+/Users/francesco/Desktop/Progetto_esame/Untoten Horde Simulator/Temp/bin/Debug/Assembly-CSharp.dll.mdb
+/Users/francesco/Desktop/Progetto_esame/Untoten Horde Simulator/Temp/bin/Debug/Assembly-CSharp.dll
+/Users/francesco/Desktop/Progetto_esame/Untoten Horde Simulator/obj/Debug/Assembly-CSharp.dll
+/Users/francesco/Desktop/Progetto_esame/Untoten Horde Simulator/obj/Debug/Assembly-CSharp.dll.mdb
+/Users/francesco/Desktop/Progetto_esame/Untoten Horde Simulator/Temp/bin/Debug/Assembly-CSharp-firstpass.dll
+/Users/francesco/Desktop/Progetto_esame/Untoten Horde Simulator/Temp/bin/Debug/Assembly-CSharp-firstpass.dll.mdb

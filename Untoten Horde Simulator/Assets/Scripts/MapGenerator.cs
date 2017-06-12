@@ -21,7 +21,7 @@ public class MapGenerator : MonoBehaviour
     //lista che contiene le stanze attualmente posizionate nella mappa
     private List <Room> spawnedRooms = new List<Room>();
     //lista delle uscite non ancora connesse alla stanza
-    List<Exit> notConnectedExits = new List<Exit>();
+    private List<Exit> notConnectedExits = new List<Exit>();
 
     //riferimento al game manager che si occupa di gestire il gioco
     private GameManager gm;

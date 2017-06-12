@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
     public float regenerationStartTime;
 	public float regenerateEvery;
     private float nextRegeneration;
-	public float regenerationAmount;
+	public int regenerationAmount;
 
 	//flag che dice se il giocatore sta mirando
     private bool isAiming;
@@ -162,7 +162,7 @@ public class Player : MonoBehaviour
 
     private void Shot()
     {
-        equippedWeapon.Shot();
+        equippedWeapon.Shoot();
     }
 
     private void Reload()
@@ -194,7 +194,7 @@ public class Player : MonoBehaviour
     private void Unaim()
     {
         isAiming = false;
-        //weapon.localPosition = equippedWeapon.normalPosition;
+        weapon.localPosition = equippedWeapon.normalPosition;
         currentLerpTime = 0;
         weaponStartingPosition = weapon.localPosition;
         weaponInterpolatePosition = equippedWeapon.normalPosition;
@@ -213,7 +213,7 @@ public class Player : MonoBehaviour
             if (hit.collider.tag == "Door")
             {
                 Door door = hit.collider.GetComponent<Door>();
-                ShowActionHint("Premi F per aprire la porta [<color=#ffa500ff>" + door.cost + " punti</color>]");
+                ShowActionHint("Premi F per aprire la porta [<color=#ffa500ff>" + door.openCost + " punti</color>]");
             }
             else if (hit.collider.tag == "BuyableWeapon")
             {
@@ -238,12 +238,12 @@ public class Player : MonoBehaviour
             if (hit.collider.tag == "Door")
             {
                 Door door = hit.collider.GetComponent<Door>();
-                if(points >= door.cost)
+                if(points >= door.openCost)
                 {
                     Transform[] newSpawnPoints = door.transform.parent.GetComponent<Room>().spawnPoints;
                     GameManager gm = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
-                    ModifyPoints(-door.cost);
+                    ModifyPoints(-door.openCost);
                     door.GetComponent<Collider>().enabled = false;
 
                     for (int i=0; i<newSpawnPoints.Length; i++)
