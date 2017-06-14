@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
 	public Transform weaponSlot;
 	//layer che contiene tutti gli ogetti attivabili
 	public LayerMask activableLayer;
+	//contenitore di tutti gli elementi UI del giocatore
+	public Transform UIContainer;
 	//riferimento all'oggetto arma
 	public Transform weapon;
 	//riferimento allo script arma
@@ -38,7 +40,7 @@ public class Player : MonoBehaviour
     public Text pointsCounter;
     public Text actionHint;
     public Image sight;
-    public Image hitMarker;
+	public GameObject hitMarker;
 	public Slider hpSlider;
 	public Slider armorSlider;
 
@@ -132,10 +134,6 @@ public class Player : MonoBehaviour
         {
             Action();
         }
-        else if(Input.GetKeyDown(KeyCode.H))
-        {
-            ShowHitMarker(new Vector2(Random.Range(-3.14f, 3.14f), Random.Range(-3.14f, 3.14f)));
-        }
 
         CheckAction();
 
@@ -153,6 +151,14 @@ public class Player : MonoBehaviour
             weapon.localPosition = Vector3.Lerp(weaponStartingPosition, weaponInterpolatePosition, perc);
            // Debug.Log("Perc: " + perc);
         }
+	}
+
+	void OnTriggerEnter(Collider other)
+	{
+		if (other.tag == "Ammo Pick Up")
+		{
+			equippedWeapon.AmmoReserve = equippedWeapon.maxAmmo;
+		}
 	}
 
     #endregion
@@ -194,7 +200,7 @@ public class Player : MonoBehaviour
     private void Unaim()
     {
         isAiming = false;
-        weapon.localPosition = equippedWeapon.normalPosition;
+        //weapon.localPosition = equippedWeapon.normalPosition;
         currentLerpTime = 0;
         weaponStartingPosition = weapon.localPosition;
         weaponInterpolatePosition = equippedWeapon.normalPosition;
@@ -270,9 +276,10 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage, Vector2 direction)
+	public void TakeDamage(int damage, float angle)
     {
         TakeDamage(damage);
+		ShowHitMarker (angle);
     }
 
     private void Die()
@@ -322,10 +329,16 @@ public class Player : MonoBehaviour
         actionHint.enabled = false;
     }
 
-    public void ShowHitMarker(Vector2 direction)
+	public void ShowHitMarker(float angle)
     {
-        hitMarker.enabled = true;
-        hitMarker.rectTransform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x));
+		Debug.Log("Angle:" + angle);
+		GameObject newHitMarker = Instantiate(hitMarker);
+		newHitMarker.transform.parent = UIContainer;
+		newHitMarker.transform.localPosition = Vector3.zero;
+		newHitMarker.transform.localScale = Vector3.one;
+		newHitMarker.GetComponent<HitMarker> ().rotation = angle;
+		newHitMarker.SetActive (true);
+		//hitMarker.transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
 	private void UpdateArmorUI()

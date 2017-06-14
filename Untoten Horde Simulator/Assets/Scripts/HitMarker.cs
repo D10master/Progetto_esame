@@ -19,4 +19,9 @@ public class HitMarker : MonoBehaviour
     {
 		transform.localRotation = Quaternion.Euler(0f, 0f, playerTransform.rotation.eulerAngles.y - rotation);
 	}
+
+	public void Delete()
+	{
+		Destroy (gameObject);
+	}
 }
