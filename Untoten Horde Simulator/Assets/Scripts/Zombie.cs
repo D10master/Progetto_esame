@@ -6,24 +6,47 @@ public class Zombie : MonoBehaviour
 
     #region Fields
 
+	//RIFERIMENTI A COMPONENTI
+	/*riferimento al nav mesh agent che permette allo zombie
+	di camminare nelle aree dove gli è consentito*/
     private NavMeshAgent nav;
+	//riferimento al giocatore da inseguire
     private Transform target;
+	//riferimento al componente che gestisce le animazioni
     private Animator animator;
 
+	//COMPONENTI AUDIO
+	//riferimento al componente che si occupa di emettere suoni
     private AudioSource audioSrc;
+	//gruppo di array per diverse tipologie di clip audio
     public AudioClip[] speakClips;
     public AudioClip[] screamClips;
     public AudioClip[] attackClips;
     public AudioClip[] dieClips;
-
+	//contatore del tempo restante per l'emissione del suono successivo
     private float nextSound;
 
+
+	//CARATTERISTICHE FISICHE DELLO ZOMBIE
+	//velocità di movimento
     public float speed;
+	//danno inflitto dagli attacchi corpo a corpo
     public int meleeDamage;
+	//distanza degli attacchi corpo a orpo
     public float meleeRange;
+	//tempo impiegato per sferrare un attacco
     public float attackTime;
+	//contatore del tempo per il prossimo attacco
     private float nextAttack;
+	//punti vita dello zombie
     public int hp;
+
+
+	//ATTRIBUTI DROP DI OGGETTI
+	public float armorDropRate;
+	public GameObject armorPickUp;
+	public float ammoDropRate;
+	public GameObject ammoPickUp;
 
     #endregion
 
@@ -149,11 +172,33 @@ public class Zombie : MonoBehaviour
             colliders[i].enabled = false;
         }
 
+		AttemptAmmoGeneration ();
+		AttemptArmorGeneration ();
+
+
         gm.SpawnedZombies.Remove(this);
         gm.CheckZombies();
         Destroy(gameObject, 20);
         enabled = false;
     }
+
+	public void AttemptArmorGeneration()
+	{
+		if (Random.value < armorDropRate)
+		{
+			Instantiate (armorPickUp, transform.position, Quaternion.identity);
+		}
+	}
+
+	public void AttemptAmmoGeneration()
+	{
+		if (Random.value < ammoDropRate)
+		{
+			Instantiate (ammoPickUp, transform.position, Quaternion.identity);
+		}
+	}
+
+
 
 	public void Attack()
 	{

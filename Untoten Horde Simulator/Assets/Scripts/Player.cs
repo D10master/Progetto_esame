@@ -28,14 +28,7 @@ public class Player : MonoBehaviour
 	//riferimento allo script arma
 	private Weapon equippedWeapon;
 
-	//velocità di camminata senza che l'arma sia tenuta in modalità mirino
-    public float normalSpeed;
-	//velocità di camminata con l'arma tenuta in modalità mirino
-    public float aimingSpeed;
-
-
-
-    //Elementi UI
+    //ELEMENTI UI
     public Text ammoCounter;
     public Text pointsCounter;
     public Text actionHint;
@@ -44,15 +37,20 @@ public class Player : MonoBehaviour
 	public Slider hpSlider;
 	public Slider armorSlider;
 
-    //hp e rigenerazione
+    //PUNTI SALUTE E VALORI DI RIGENERAZIONE
     public int maxHp;
 	private int hp;
-	public int maxArmor;
+	private int maxArmor;
 	private int armor;
     public float regenerationStartTime;
 	public float regenerateEvery;
     private float nextRegeneration;
 	public int regenerationAmount;
+
+	//velocità di camminata senza che l'arma sia tenuta in modalità mirino
+	public float normalSpeed;
+	//velocità di camminata con l'arma tenuta in modalità mirino
+	public float aimingSpeed;
 
 	//flag che dice se il giocatore sta mirando
     private bool isAiming;
@@ -79,6 +77,7 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         equippedWeapon = weaponSlot.GetComponentInChildren<Weapon>();
         weapon = equippedWeapon.transform;
+		maxArmor = Consts.MAX_ARMOR;
 		armorSlider.minValue = 0;
 		armorSlider.maxValue = maxArmor;
 		hpSlider.minValue = 0;
@@ -155,9 +154,16 @@ public class Player : MonoBehaviour
 
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.tag == "Ammo Pick Up")
+		if (other.tag == "Armor Pick Up")
+		{
+			ModifyArmor (Consts.ARMOR_PICK_UP_VALUE);
+			Destroy (other.gameObject);
+		}
+		else if (other.tag == "Ammo Pick Up")
 		{
 			equippedWeapon.AmmoReserve = equippedWeapon.maxAmmo;
+			Destroy (other.gameObject);
+			UpdateAmmoCounter ();
 		}
 	}
 
@@ -268,7 +274,9 @@ public class Player : MonoBehaviour
     public void TakeDamage(int damage)
     {
 		hp -= Consts.CalculateDamage(damage, armor);
+		armor -= damage;
 		UpdateHpUI ();
+		UpdateArmorUI ();
         //Debug.Log("Damage:" + damage);
         if (hp <= damage)
         {

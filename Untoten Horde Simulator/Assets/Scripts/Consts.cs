@@ -16,9 +16,10 @@ public static class Consts
     public const float MIN_ZOMBIE_SOUND_TIME = 5f;
     public const float MAX_ZOMBIE_SOUND_TIME = 8f;
     public const int MAX_ZOMBIES_IN_SCENE = 20;
-	public const int MAX_ARMOR = 100;
-	private const int ARMOR_SCALING = 60;
-    private const float CRIT_MULTIPLIER = 3f;
+	public const int MAX_ARMOR = 750;
+	public const int ARMOR_PICK_UP_VALUE = 250;
+	public const int ARMOR_SCALING = 60;
+	public const float CRIT_MULTIPLIER = 3f;
 
     public static float applyPercent(float number, float percent)
 	{
