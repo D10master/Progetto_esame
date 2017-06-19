@@ -132,6 +132,17 @@ public class GameManager : MonoBehaviour
                 eegPanel.SetActive(false);
             }
         }
+        if(Input.GetKeyDown(KeyCode.M))
+        {
+            if(!Demo.demo)
+            {
+                Demo.demo = true;
+            }
+            else
+            {
+                Demo.demo = false;
+            }
+        }
 		else if (Input.GetButtonDown ("Escape"))
 		{
 			Application.Quit ();

@@ -10,8 +10,6 @@ public class AttMed : MonoBehaviour {
 	private int meditation1;
 	public GameObject circleAtt;
 	public GameObject circleMed;
-	public Slider AttBar;
-	public Slider MedBar;
 	private float t;
 	private float startMed, finishMed;
 	private float startAtt, finishAtt,perc;
@@ -51,11 +49,9 @@ public class AttMed : MonoBehaviour {
 
 		float newScale= Mathf.Lerp(startAtt, finishAtt, perc);
 		circleAtt.transform.localScale=new Vector3(newScale, newScale, 1);
-		AttBar.value = newScale;
 
 		float newScale1= Mathf.Lerp(startMed, finishMed, t);
 		circleMed.transform.localScale=new Vector3(newScale1, newScale1, 1);
-		MedBar.value = newScale1;
 
 	}
 
