@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
 
     //UI elements
     public Text roundText;
+    public GameObject eegPanel;
 
     public Animator gameOverAnimator;
 
@@ -120,7 +121,18 @@ public class GameManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-		if (Input.GetButtonDown ("Escape"))
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            if (!eegPanel.activeSelf)
+            {
+                eegPanel.SetActive(true);
+            }
+            else
+            {
+                eegPanel.SetActive(false);
+            }
+        }
+		else if (Input.GetButtonDown ("Escape"))
 		{
 			Application.Quit ();
 		}
