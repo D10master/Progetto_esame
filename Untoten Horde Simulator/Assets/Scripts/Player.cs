@@ -99,7 +99,7 @@ public class Player : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetMouseButtonDown(0) && (equippedWeapon.fireType == FireType.SEMI_AUTO || equippedWeapon.fireType == FireType.BLAST))
+        if ( (Input.GetMouseButtonDown(0) || Input.GetButtonDown("Fire1") ) && (equippedWeapon.fireType == FireType.SEMI_AUTO || equippedWeapon.fireType == FireType.BLAST))
         {
             Shot();
             UpdateAmmoCounter();
