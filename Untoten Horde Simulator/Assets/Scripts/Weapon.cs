@@ -169,7 +169,9 @@ public class Weapon : MonoBehaviour
                             }
                             else if (hit.distance > maxDamageDistance && hit.distance < minDamageDistance)
                             {
-                                zombie.TakeDamage(maxDamage /* minDamage/(minDamageDistance - maxDamageDistance)*/, player);
+                                float deltaDistance = minDamageDistance - maxDamageDistance;
+                                float distancePerc = deltaDistance / 100f * hit.distance;
+                                zombie.TakeDamage(Mathf.RoundToInt(Mathf.Lerp(maxDamage, minDamage, distancePerc)), player);
                             }
                             else
                             {
