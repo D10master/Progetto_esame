@@ -54,6 +54,9 @@ MonoBehaviour:
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
   controlID: 49
+<<<<<<< HEAD
+>>>>>>> b89520960296717c36807ac565a72b81f6280781
+=======
 >>>>>>> b89520960296717c36807ac565a72b81f6280781
 --- !u!114 &3
 MonoBehaviour:
@@ -70,6 +73,7 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 0
     y: 0
     width: 1280
@@ -78,6 +82,8 @@ MonoBehaviour:
   m_MaxSize: {x: 0, y: 0}
   m_LastLoadedLayoutName: 
 =======
+=======
+>>>>>>> b89520960296717c36807ac565a72b81f6280781
     x: 1283
     y: 0
     width: 637
@@ -258,6 +264,7 @@ MonoBehaviour:
     x: 248
     y: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     width: 755
     height: 352
   m_MinSize: {x: 204, y: 224}
@@ -270,12 +277,17 @@ MonoBehaviour:
   m_Selected: 1
   m_LastSelected: 0
 =======
+=======
+>>>>>>> b89520960296717c36807ac565a72b81f6280781
     width: 1283
     height: 987
   m_MinSize: {x: 406, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
   controlID: 50
+<<<<<<< HEAD
+>>>>>>> b89520960296717c36807ac565a72b81f6280781
+=======
 >>>>>>> b89520960296717c36807ac565a72b81f6280781
 --- !u!114 &10
 MonoBehaviour:
@@ -312,6 +324,9 @@ MonoBehaviour:
   m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
   controlID: 102
+<<<<<<< HEAD
+>>>>>>> b89520960296717c36807ac565a72b81f6280781
+=======
 >>>>>>> b89520960296717c36807ac565a72b81f6280781
 --- !u!114 &11
 MonoBehaviour:
@@ -328,6 +343,7 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 1003
     y: 0
     width: 277
@@ -336,6 +352,8 @@ MonoBehaviour:
   m_MaxSize: {x: 4002, y: 4024}
   m_ActualView: {fileID: 18}
 =======
+=======
+>>>>>>> b89520960296717c36807ac565a72b81f6280781
     x: 402
     y: 0
     width: 881
@@ -612,6 +630,9 @@ MonoBehaviour:
     height: 369
   m_SearchFilter:
     m_NameFilter: weap
+<<<<<<< HEAD
+>>>>>>> b89520960296717c36807ac565a72b81f6280781
+=======
 >>>>>>> b89520960296717c36807ac565a72b81f6280781
     m_ClassNames: []
     m_AssetLabels: []
@@ -663,7 +684,11 @@ MonoBehaviour:
     m_SelectedIDs: 
     m_LastClickedID: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_ExpandedIDs: 00000000ca260000fe2600001e280000dc2a00006e2d0000a6310000bc31000000ca9a3bffffff7f
+=======
+    m_ExpandedIDs: 00000000de2600001227000032280000f02a0000822d0000be310000d2310000
+>>>>>>> b89520960296717c36807ac565a72b81f6280781
 =======
     m_ExpandedIDs: 00000000de2600001227000032280000f02a0000822d0000be310000d2310000
 >>>>>>> b89520960296717c36807ac565a72b81f6280781
