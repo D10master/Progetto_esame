@@ -37,13 +37,16 @@ public class Player : MonoBehaviour
 	public Slider hpSlider;
 	public Slider armorSlider;
 
-    //PUNTI SALUTE E VALORI DI RIGENERAZIONE
+    //PUNTI SALUTE E ARMATURA
     public int maxHp;
 	private int hp;
 	private int maxArmor;
 	private int armor;
+
+	//RIGENERAZIONE SALUTE
     public float regenerationStartTime;
 	public float regenerateEvery;
+	private float nextRegenerationStart;
     private float nextRegeneration;
 	public int regenerationAmount;
 
@@ -99,6 +102,7 @@ public class Player : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+		//controllo degli input da tastiera
         if ( (Input.GetMouseButtonDown(0) || Input.GetButtonDown("Fire1") ) && (equippedWeapon.fireType == FireType.SEMI_AUTO || equippedWeapon.fireType == FireType.BLAST))
         {
             Shot();
@@ -134,8 +138,13 @@ public class Player : MonoBehaviour
             Action();
         }
 
+		//controllo della possibilità di compiere un'azione (apertura porta)
         CheckAction();
 
+		//rigenerazione della vita
+		CheckRegeneration();
+
+		//movimento dell'arma mira/non mira
         if(currentLerpTime < lerpTime)
         {
             float perc = currentLerpTime / lerpTime;
@@ -271,10 +280,44 @@ public class Player : MonoBehaviour
         }
     }
 
+	private void CheckRegeneration()
+	{
+		if(hp < maxHp)
+		{
+			if (nextRegenerationStart > 0)
+			{
+				nextRegenerationStart -= Time.deltaTime;
+			}
+			else
+			{
+				if (nextRegeneration > 0)
+				{
+					nextRegeneration -= Time.deltaTime;
+				}
+				else
+				{
+					Regenerate (regenerationAmount);
+				}
+			}
+		}
+	}
+
+	public void Regenerate(int regeneration)
+	{
+		hp += regeneration;
+
+		if (hp > maxHp)
+			hp = maxHp;
+
+		UpdateHpUI ();
+	}
+
     public void TakeDamage(int damage)
     {
+		nextRegenerationStart = regenerationStartTime;
+		nextRegeneration = regenerateEvery;
 		hp -= Consts.CalculateDamage(damage, armor);
-		armor -= damage;
+		ModifyArmor (-damage);
 		UpdateHpUI ();
 		UpdateArmorUI ();
         //Debug.Log("Damage:" + damage);

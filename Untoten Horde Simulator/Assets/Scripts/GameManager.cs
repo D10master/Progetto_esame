@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 
     //audio component
     public AudioSource ambientSoundSource;
-    private AudioSource audioSrc;
+    //private AudioSource audioSrc;
     public AudioClip ambientClip;
     public AudioClip roundStartClip;
     public AudioClip roundEndClip;
@@ -34,8 +34,8 @@ public class GameManager : MonoBehaviour
 
 
     //zombies attributes
-    public float walkerSpeed;
-    public float runnerSpeed;
+    //public float walkerSpeed;
+    //public float runnerSpeed;
     public int startingZombiesCount;
     public int zombiesIncrement;
     private int zombiesReserve;
@@ -102,11 +102,20 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        audioSrc = GetComponent<AudioSource>();
+        //audioSrc = GetComponent<AudioSource>();
         zombiesSpawnPoints = new List<Transform>();
         spawnedZombies = new List<Zombie>();
         mapGenerator = GetComponent<MapGenerator>();
         mapGenerator.GenerateMap();
+
+		//aggiunge gli spawnpoints degli zombie
+		for (int i = 0; i < mapGenerator.rooms.Length; i++)
+		{
+			for(int j = 0; j < mapGenerator.rooms[i].spawnPoints.Length; j++)
+				SpawnPoints.Add (mapGenerator.rooms[i].spawnPoints[j]);
+		}
+
+
         SpawnPlayer();
 
 		maxSpawnedZombies = Consts.MAX_ZOMBIES_IN_SCENE;
@@ -163,9 +172,9 @@ public class GameManager : MonoBehaviour
 			}
 			else
 			{
-                if (SpawnedZombies.Count < Consts.MAX_ZOMBIES_IN_SCENE)
+				if (zombiesReserve > 0 && SpawnedZombies.Count < maxSpawnedZombies)
                 {
-                    SpawnZombie(Vector3.zero);
+                    SpawnZombie();
                     nextSpawn = Random.Range(Consts.MIN_ZOMBIE_SPAWN_TIME, Consts.MAX_ZOMBIE_SPAWN_TIME);
                 }
 			}
@@ -219,8 +228,8 @@ public class GameManager : MonoBehaviour
     public void StartRound()
     {
         round++;
-        zombiesReserve = startingZombiesCount + (zombiesIncrement * round - 1);
-        zombiesHealth = startingZombiesHealth + (zombiesHealthIncrement * round - 1);
+		zombiesReserve = startingZombiesCount + (zombiesIncrement * (round - 1));
+		zombiesHealth = startingZombiesHealth + (zombiesHealthIncrement * (round - 1));
         float attentionPerc = AverageAttention() / 100f;
         zombiesAttack = Mathf.RoundToInt(Mathf.Lerp(Consts.ZOMBIE_MIN_ATTACK, Consts.ZOMBIE_MAX_ATTACK, attentionPerc));
         zombiesSpeed = Mathf.RoundToInt(Mathf.Lerp(Consts.ZOMBIE_MIN_SPEED, Consts.ZOMBIE_MAX_SPEED, attentionPerc));
@@ -228,6 +237,8 @@ public class GameManager : MonoBehaviour
         UpdateRoundText();
         ambientSoundSource.clip = roundStartClip;
         ambientSoundSource.Play();
+
+		Debug.Log (zombiesReserve);
     }
 
     public void EndRound()
@@ -253,7 +264,9 @@ public class GameManager : MonoBehaviour
 	{
         GameObject zombieGameObject = Instantiate(zombies[Random.Range(0, zombies.Length)], position, Quaternion.identity);
         Zombie zombieComponent = zombieGameObject.GetComponent<Zombie>();
-        zombieComponent.hp = zombiesHealth;
+		zombieComponent.hp = zombiesHealth;
+		zombieComponent.meleeDamage = zombiesAttack;
+		zombieComponent.speed = zombiesSpeed;
 
         zombiesReserve--;
         spawnedZombies.Add(zombieComponent);
@@ -261,6 +274,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+		player.GetComponent<GameOver> ().enabled = true;
         gameOverAnimator.SetTrigger("Game Over");
         ambientSoundSource.clip = gameOverClip;
         ambientSoundSource.Play();
