@@ -103,7 +103,7 @@ public class Player : MonoBehaviour
 	void Update ()
     {
 		//controllo degli input da tastiera
-        if ( (Input.GetMouseButtonDown(0) || Input.GetButtonDown("Fire1") ) && (equippedWeapon.fireType == FireType.SEMI_AUTO || equippedWeapon.fireType == FireType.BLAST))
+        if ( (Input.GetMouseButtonDown(0) || Input.GetButtonDown("Fire 1") ) && (equippedWeapon.fireType == FireType.SEMI_AUTO || equippedWeapon.fireType == FireType.BLAST))
         {
             Shot();
             UpdateAmmoCounter();

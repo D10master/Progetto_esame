@@ -120,6 +120,8 @@ public class Weapon : MonoBehaviour
         ammoReserve = maxAmmo;
         ammoInMagazine = magazineSize;
         canShoot = true;
+
+		player.UpdateAmmoCounter ();
 	}
 	
 	// Update is called once per frame
