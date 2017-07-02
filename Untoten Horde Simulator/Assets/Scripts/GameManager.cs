@@ -44,6 +44,8 @@ public class GameManager : MonoBehaviour
     public int startingZombiesHealth;
     public int zombiesHealthIncrement;
     private int zombiesHealth;
+    private int zombiesAttack;
+    private int zombiesSpeed;
 
     //UI elements
     public Text roundText;
@@ -51,12 +53,13 @@ public class GameManager : MonoBehaviour
 
     public Animator gameOverAnimator;
 
-	//neurosky data
+    //neurosky data
+    public bool isAnalyzingBrain;
 	public TGCConnectionController connectionController;
 	private int attention;
 	public float attentionPickTime;
 	private float nextPick;
-	private List<int> attentionLevels;
+	private List<float> attentionLevels;
 	public int attentionListLength = 150;
     #endregion
 
@@ -114,7 +117,7 @@ public class GameManager : MonoBehaviour
         nextSpawn = Random.Range(Consts.MIN_ZOMBIE_SPAWN_TIME, Consts.MAX_ZOMBIE_SPAWN_TIME);
 
 		connectionController.UpdateAttentionEvent += OnUpdateAttention;
-		attentionLevels = new List<int>();
+		attentionLevels = new List<float>();
 		nextPick = attentionPickTime;
 	}
 	
@@ -218,6 +221,9 @@ public class GameManager : MonoBehaviour
         round++;
         zombiesReserve = startingZombiesCount + (zombiesIncrement * round - 1);
         zombiesHealth = startingZombiesHealth + (zombiesHealthIncrement * round - 1);
+        float attentionPerc = AverageAttention() / 100f;
+        zombiesAttack = Mathf.RoundToInt(Mathf.Lerp(Consts.ZOMBIE_MIN_ATTACK, Consts.ZOMBIE_MAX_ATTACK, attentionPerc));
+        zombiesSpeed = Mathf.RoundToInt(Mathf.Lerp(Consts.ZOMBIE_MIN_SPEED, Consts.ZOMBIE_MAX_SPEED, attentionPerc));
         roundInProgress = true;
         UpdateRoundText();
         ambientSoundSource.clip = roundStartClip;
@@ -271,7 +277,7 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	public int AverageAttention()
+	public float AverageAttention()
 	{
 		int total=0;
 
@@ -280,7 +286,7 @@ public class GameManager : MonoBehaviour
 			total += val;
 		}
 
-		return Mathf.RoundToInt((float)total / attentionLevels.Count);
+		return total / attentionLevels.Count;
 	}
 
 	private void OnUpdateAttention(int value)
